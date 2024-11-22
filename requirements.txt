@@ -1,4 +1,8 @@
 pymavlink
 pyserial
 matplotlib
-
+streamlit
+numpy
+fastapi
+uvicorn[standard]
+aiohttp
