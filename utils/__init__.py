@@ -1,8 +1,8 @@
 import aiohttp
 from collections import deque
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+# import numpy as np
+# import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 WS_CONN = "ws://localhost:8000/ws"
 
@@ -140,9 +140,9 @@ IMU_PITCH = deque([0,]*100, maxlen=100)
 async def consumer(ctr, status, subplot=[]):
 
     async with aiohttp.ClientSession(trust_env = True) as session:
-        status.subheader(f"Connecting to {WS_CONN}")
+        status.subheader(f"Connecting to Autopilot")
         async with session.ws_connect(WS_CONN) as websocket:
-            status.subheader(f"Connected to: {WS_CONN}")
+            status.subheader(f"Connected to Autopilot")
             async for message in websocket:
                 data = message.json()
                 if data["channel"] == "IMU1":
